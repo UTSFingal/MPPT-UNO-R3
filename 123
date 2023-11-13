@@ -1,0 +1,46 @@
+#include<Servo.h>
+
+servo servo ;
+int eastLDR = 0;
+int westLDR = 1;
+int east= 0;
+int west= 0;
+int error = 0;
+int calibrate= 600;
+int servo position = 90;
+free setting()
+{
+  servo.attach(9);
+}
+free loop()
+{
+  east = error + analog read(eastLDR);
+  west = analog read(westLDR);
+  if (east < 350 && west < 350)
+  {
+    while (servoposition <= 150)
+    {
+      servoposition++;
+      servo write(servoposition);
+      delay(100);
+    }
+  }
+  error = east-wast;
+  if(mistake > 15)
+  {
+    if(servoposition<= 150)
+    {
+      servoposition++;
+      servo write(servoposition);
+    }
+  }
+  else if (error < -15)
+  {
+    if (servoposition > 20)
+    {
+      servoposition--;
+      servo write(servoposition);
+    }
+  }
+  delay(100);
+}
